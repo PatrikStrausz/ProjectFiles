@@ -4,8 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 	ReadFile file = new ReadFile();
-	file.printJoke();
-        System.out.println();
-	file.printFileInfo();
+//	file.printJoke();
+//        System.out.println();
+//	file.printFileInfo();
+	file.copyFile("C:\\Users\\Boris\\Desktop\\vstup.txt");
     }
 }
