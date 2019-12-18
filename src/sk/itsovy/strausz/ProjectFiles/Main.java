@@ -20,5 +20,7 @@ public class Main {
 //        file.analyse("C:\\Users\\Boris\\Desktop\\java_file\\analyser.txt");
         file.encrypt("C:\\Users\\Boris\\Desktop\\java_file\\encrypt.txt", "C:\\Users\\Boris\\Desktop\\java_file\\encrypt2.txt");
 
+
+
     }
 }
