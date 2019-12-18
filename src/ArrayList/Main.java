@@ -15,9 +15,11 @@ public class Main {
         arr.add("apple");
         arr.add(2, "pineapple");
         arr.remove(2);
-        arr.add("pee");
+        arr.add("pea");
         arr.set(4, "orange");
-        
+        arr.sort(String::compareToIgnoreCase);
+
+
 
         for (String temp : arr) {
             System.out.println(temp);
