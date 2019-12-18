@@ -1,6 +1,7 @@
 package sk.itsovy.strausz.ProjectFiles;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class ReadFile {
 
 //    public void printJoke() {
 ////        try {
-////            File myFile = new File("C:\\Users\\Boris\\Desktop\\joke.txt");
+////            File myFile = new File("C:\\Users\\Boris\\Desktop\\java_file\\joke.txt");
 ////            Scanner myReader = new Scanner(myFile); // vytvori scanner ktory prejde cely file
 ////            while (myReader.hasNextLine()) { // pokial ma text dalsi riadok
 ////                String data = myReader.nextLine(); // ulozi riadok do data
@@ -25,7 +26,7 @@ public class ReadFile {
 ////
 ////
 ////    public void printFileInfo() {
-////        File myFile = new File("C:\\Users\\Boris\\Desktop\\joke.txt");
+////        File myFile = new File("C:\\Users\\Boris\\Desktop\\java_file\\joke.txt");
 ////        if (myFile.exists()) {
 ////            System.out.println("File name: " + myFile.getName() + "\n" +
 ////                    "Absolut path: " + myFile.getAbsolutePath() + "\n" +
@@ -39,7 +40,7 @@ public class ReadFile {
 ////    }
 ////
 ////    public void copyFile(String sourceFile) {
-////        String destFile = "C:\\Users\\Boris\\Desktop\\vstup_copy.txt";
+////        String destFile = "C:\\Users\\Boris\\Desktop\\java_file\\vstup_copy.txt";
 ////
 ////        try {
 ////
@@ -64,8 +65,8 @@ public class ReadFile {
 ////    }
 
 //    public int dictation(String sourceFile, String target) {
-//        sourceFile = "C:\\Users\\Boris\\Desktop\\diktat.txt";    // ak je v slove i/y vymeni ich za _
-//        target = "C:\\Users\\Boris\\Desktop\\diktat_copy.txt";
+//        sourceFile = "C:\\Users\\Boris\\Desktop\\java_file\\diktat.txt";    // ak je v slove i/y vymeni ich za _
+//        target = "C:\\Users\\Boris\\Desktop\\java_file\\diktat_copy.txt";
 //        int count = 0;
 //        try {
 //            File src = new File(sourceFile);
@@ -123,7 +124,7 @@ public class ReadFile {
 //    }
 
 //    public double printAvg(String sourceFile) {
-//        sourceFile = "C:\\Users\\Boris\\Desktop\\number.txt";
+//        sourceFile = "C:\\Users\\Boris\\Desktop\\java_file\\number.txt";
 //        double sum = 0;
 //        int count = 0;
 //        try {
@@ -158,9 +159,9 @@ public class ReadFile {
             FileReader fr = new FileReader(sourceFile);
             BufferedReader br = new BufferedReader(fr);
             int temp;
-            while ((temp = br.read()) != -1){
-                char c = (char)temp;
-                if (c == ' ' || c == ','){
+            while ((temp = br.read()) != -1) {
+                char c = (char) temp;
+                if (c == ' ' || c == ',') {
                     continue;
                 }
                 count++;
@@ -172,9 +173,9 @@ public class ReadFile {
             br = new BufferedReader(fr);
             int[] arr = new int[count];
             count = 0;
-            while ((temp = br.read()) != -1){
-                char c = (char)temp;
-                if (c == ' ' || c == ','){
+            while ((temp = br.read()) != -1) {
+                char c = (char) temp;
+                if (c == ' ' || c == ',') {
                     continue;
                 }
                 arr[count] = Character.getNumericValue(c);
@@ -183,18 +184,18 @@ public class ReadFile {
             fr.close();
             br.close();
 
-            for (int i=0; i<arr.length; i++){
-                for (int j=0; j<arr.length-1; j++){
-                    if (arr[j]>arr[j+1]){
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr.length - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
                         temp = arr[j];
-                        arr[j] = arr[j+1];
-                        arr[j+1]=temp;
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
                     }
                 }
             }
             String str = Arrays.toString(arr);
             System.out.println(str);
-            FileWriter fw = new FileWriter("C:\\Users\\Boris\\Desktop\\number2.txt");
+            FileWriter fw = new FileWriter("C:\\Users\\Boris\\Desktop\\java_file\\number2.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(str);
             bw.close();
@@ -206,36 +207,110 @@ public class ReadFile {
 
     }
 
-    public void test1(String sourFile) throws IOException {
-        File src = new File(sourFile);
-        FileWriter writer = new FileWriter(sourFile);
+//    public void sort2(String sourFile) throws IOException {
+//        File src = new File(sourFile);
+//        FileWriter writer = new FileWriter(sourFile);
+//
+//
+//        int arr[] = {20, 40, 50, 60, 10};
+//        int len = arr.length;
+//        for (int i = 0; i < len; i++) {
+//            writer.write(arr[i] + "\t" + "");
+//        }
+//        writer.write("|");
+//        for (int i = 0; i <= arr.length - 1; i++) {
+//            for (int j = i + 1; j < arr.length; j++) {
+//                if (arr[i] > arr[j]) {
+//                    int temp = arr[i];
+//                    arr[i] = arr[j];
+//                    arr[j] = temp;
+//                }
+//            }
+//
+//        }
+//
+//        for (int i = 0; i < len; i++) {
+//            writer.write(arr[i] + "\t" + "");
+//        }
+//
+//
+//        writer.close();
+//
+//    }
+
+    public void analyse(String sourceFile) throws FileNotFoundException { //zisti kolko znakov obsahuje text
 
 
-        int arr[] = {20, 40, 50, 60, 10};
-        int len = arr.length;
-        for (int i = 0; i < len; i++) {
-            writer.write(arr[i] + "\t" + "");
+        int[] arr = new int[96];
+        for (int temp : arr) {
+            temp = 0;
         }
-        writer.write("|");
-        for (int i = 0; i <= arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] > arr[j]) {
-                    int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+
+        BufferedReader myReader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(sourceFile)), Charset.forName("UTF-8")));
+
+        int c;
+        try {
+            while ((c = myReader.read()) != -1) {
+
+                char character = (char) c;
+                if (c >= 32 && c <= 127) {
+                    arr[c - 32]++;
                 }
+
             }
+            for (int i = 0; i < 95; i++) {
+                System.out.println((char) (i + 32) + " : " + arr[i]);
+            }
+            myReader.close();
 
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        for (int i = 0; i < len; i++) {
-            writer.write(arr[i] + "\t" + "");
-        }
-
-
-        writer.close();
 
     }
 
+    public void encrypt(String sourceFile, String targetFile) throws IOException { // zasifruje text s posunom o tri znaky
+
+
+        FileWriter fr = new FileWriter(targetFile);
+        BufferedReader myReader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(sourceFile)), Charset.forName("UTF-8")));
+        int c;
+        try {
+            while ((c = myReader.read()) != -1) {
+
+                char z = (char) c;
+
+                if (Character.isDigit(z)) {
+                    z += 3;
+                    if (z > '9') ;
+                    z = (char) (z - 10);
+                }
+
+                if (Character.isLowerCase(z)) {
+                    z += 3;
+                    if (z > 'z') {
+                        z = (char) (z - 26);
+                    }
+                }
+
+                if (Character.isLowerCase(z)) {
+                    z += 3;
+                    if (z > 'Z') {
+                        z = (char) (z - 26);
+                    }
+                }
+                System.out.print(z);
+                fr.write(z);
+
+            }
+
+            myReader.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
